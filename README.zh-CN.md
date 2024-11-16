@@ -15,6 +15,10 @@ English Docs | [中文文档](./README.zh-CN.md)
 
 相比 [nrm](https://github.com/Pana/nrm) 使用了更小的依赖。
 
+|nnrm|nrm|
+|---|---|
+|[![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)|[![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)|
+
 > [由来](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
 
 ## 安装
@@ -31,7 +35,7 @@ pnpm add -g nnrm
 以下命令是用来切换对应的包管理工具的源。
 
 - `nnrm` & `nrm`: npm
-- `nyrm` & `yrm`: yarn
+- `nyrm` & `yrm`: yarn（v1-v3）
 - `prm`: pnpm
 
 ```sh
@@ -107,7 +111,8 @@ nrm remove example
 
 nnrm 相比 nrm 的改进之处：
 
-- 支持 yarn （yarn 与 npm 的 registry 是互相独立的，`pnpm` 则与 npm 相同）
+- 支持 yarn(v1-v3) （yarn 与 npm 的 registry 是互相独立的，`pnpm` 则与 npm 相同）
+  - `yarn(v3)` 的配置字段使用 `npmRegistryServer` 替代了 `registry`
 - 极小的依赖
   - 使用 `node-fetch` (289B) 替代 `request` (184.8KB) 进行测速 [node-fetch vs axios vs request | npmtrends](https://www.npmtrends.com/node-fetch-vs-axios-vs-request)
   - 使用 `execa` (8.4KB) 替代 `npm` (455.4KB) 通过终端而非 node API 实现切换 [execa vs npm | npmtrends](https://www.npmtrends.com/execa-vs-npm)
@@ -148,6 +153,8 @@ cac(3.6KB) 相比 commander(6.8KB) 更小。~~并且它的名字取自我喜爱�
 
 ### 为什么使用 [execa](https://github.com/sindresorhus/execa)?
 
+为了 Node.JS 16，锁定 `execa@8`。
+
 > [execa vs shelljs](https://www.npmtrends.com/execa-vs-shelljs)
 
 [execa](https://github.com/sindresorhus/execa) 大小仅仅 8.4KB。
@@ -163,3 +170,11 @@ cac(3.6KB) 相比 commander(6.8KB) 更小。~~并且它的名字取自我喜爱�
 ## 参考
 
 - [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)
+
+## [赞助者](https://sponsors.yunyoujun.cn)
+
+<p align="center">
+  <a href="https://sponsors.yunyoujun.cn">
+    <img src='https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
+  </a>
+</p>

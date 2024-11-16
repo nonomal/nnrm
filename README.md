@@ -7,13 +7,16 @@ English Docs | [中文文档](./README.zh-CN.md)
 [![node-current](https://img.shields.io/node/v/nnrm)](https://nodejs.dev/)
 ![npm](https://img.shields.io/npm/dt/nnrm)
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/nnrm)
-![Snyk Vulnerabilities for npm scoped package](https://img.shields.io/snyk/vulnerabilities/npm/nnrm)
 
 > nnrm = new nrm
 
 New npm registry manager.
 
 Use smaller dependencies than [nrm](https://github.com/Pana/nrm).
+
+|nnrm|nrm|
+|---|---|
+|[![install size](https://packagephobia.com/badge?p=nnrm@latest)](https://packagephobia.com/result?p=nnrm@latest)|[![install size](https://packagephobia.com/badge?p=nrm)](https://packagephobia.com/result?p=nrm)|
 
 > [由来](https://www.yunyoujun.cn/posts/nnrm-new-nrm/)
 
@@ -31,7 +34,7 @@ pnpm add -g nnrm
 These commands are used to toggle the corresponding registry.
 
 - `nnrm` & `nrm`: npm
-- `nyrm` & `yrm`: yarn
+- `nyrm` & `yrm`: yarn(v1-v3)
 - `prm`: pnpm
 
 ```sh
@@ -103,7 +106,8 @@ It will be recorded in your `~/.nnrm/registries.json`.
 
 ## Features
 
-- Support `npm`/`yarn`/`pnpm` (the registry of `yarn` and `npm/pnpm` is independent of each other)
+- Support `npm`/`yarn(v1-v3)`/`pnpm` (the registry of `yarn` and `npm/pnpm` is independent of each other)
+  - `yarn(v3)` config use `npmRegistryServer` instead of `registry`
 - Smaller Dependencies
   - Use `node-fetch` instead of `request` for speed test
   - Use `execa` instead of `npm`
@@ -144,6 +148,8 @@ cac(3.6KB) is smaller than commander(6.8KB). ~~And i love C.C.~~
 
 ### Why [execa](https://github.com/sindresorhus/execa)?
 
+Lock `execa@8` for Node.JS 16.
+
 > [execa vs shelljs](https://www.npmtrends.com/execa-vs-shelljs)
 
 [execa](https://github.com/sindresorhus/execa) is only 8.4KB.
@@ -158,7 +164,7 @@ If you are a Windows user, you may want to make sure that you use a generic comm
 
 ### `nrm` conflicts with other commands
 
-nrm(command) is a command of [nrm(package)](https://github.com/Pana/nrm). 
+nrm(command) is a command of [nrm(package)](https://github.com/Pana/nrm).
 You should uninstall `nrm(package)` to use `nrm(command)` with `nnrm(package)`. Or you can use `nnrm(command)`.
 
 > nrm(command) may conflict with [nrm](https://github.com/Pana/nrm) or [ni](https://github.com/antfu/ni). You can uninstall them or just use command `nnrm` without uninstalling them.
@@ -166,3 +172,11 @@ You should uninstall `nrm(package)` to use `nrm(command)` with `nnrm(package)`. 
 ## Ref
 
 - [npm-config | npm Docs](https://docs.npmjs.com/cli/v7/commands/npm-config)
+
+## [Sponsors](https://sponsors.yunyoujun.cn)
+
+<p align="center">
+  <a href="https://sponsors.yunyoujun.cn">
+    <img src='https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
+  </a>
+</p>

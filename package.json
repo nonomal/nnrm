@@ -1,53 +1,79 @@
 {
   "name": "nnrm",
-  "version": "0.3.4",
   "type": "module",
+  "version": "0.4.4",
+  "packageManager": "pnpm@9.12.3",
   "description": "New npm registry manager.",
-  "main": "index.js",
-  "bin": {
-    "nnrm": "index.js",
-    "nrm": "index.js",
-    "nyrm": "yrm.js",
-    "yrm": "yrm.js",
-    "prm": "prm.js"
-  },
-  "engines": {
-    "node": ">=12.x"
-  },
-  "files": [
-    "index.js",
-    "yrm.js",
-    "prm.js",
-    "utils",
-    "registries.json"
-  ],
-  "keywords": [
-    "npm",
-    "registry",
-    "toggle",
-    "manager"
-  ],
-  "repository": "https://github.com/YunYouJun/nnrm",
   "author": {
     "email": "me@yunyoujun.cn",
     "name": "YunYouJun",
     "url": "https://www.yunyoujun.cn"
   },
   "license": "MIT",
-  "scripts": {
-    "dev": "node index.js",
-    "ls": "node index.js ls",
-    "test": "npm run ls && npm run test:add && npm run test:remove && npm run test:test",
-    "test:add": "node index.js add yyj https://www.yunyoujun.cn",
-    "test:remove": "node index.js remove yyj",
-    "test:test": "node index.js test",
-    "test:use": "node index.js use taobao",
-    "postinstall": "node index.js ls"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YunYouJun/nnrm"
   },
-  "dependencies": {
-    "cac": "^6.7.12",
-    "chalk": "^5.0.0",
-    "execa": "^6.1.0",
-    "node-fetch": "^3.2.0"
+  "keywords": [
+    "npm",
+    "registry",
+    "toggle",
+    "manager"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "bin": {
+    "nnrm": "dist/index.js",
+    "nrm": "dist/index.js",
+    "nyrm": "dist/yrm.js",
+    "prm": "dist/prm.js",
+    "yrm": "dist/yrm.js"
+  },
+  "files": [
+    "dist",
+    "registries.json"
+  ],
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "coverage": "vitest run --coverage",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "ls": "node dist/index.js ls",
+    "play": "node dist/index.js",
+    "test": "npm run ls && npm run test:add && npm run test:remove && npm run test:use && npm run test:test",
+    "test:add": "node dist/index.js add yyj https://www.yunyoujun.cn",
+    "test:remove": "node dist/index.js remove yyj",
+    "test:test": "node dist/index.js test",
+    "test:use": "node dist/index.js use 0x3f && node dist/index.js use taobao",
+    "test:unit": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "postinstall": "echo '`\\x1b[33mnnrm -h\\x1b[0m` to see usage \n`\\x1b[33mnnrm ls\\x1b[0m` to see registries'",
+    "release": "bumpp --commit --push --tag"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.8.0",
+    "@types/node": "^22.9.0",
+    "@vitest/coverage-c8": "^0.33.0",
+    "bumpp": "^9.8.1",
+    "cac": "^6.7.14",
+    "eslint": "^9.14.0",
+    "execa": "8",
+    "lint-staged": "^15.2.10",
+    "node-fetch": "^3.3.2",
+    "picocolors": "^1.1.1",
+    "simple-git-hooks": "^2.11.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
